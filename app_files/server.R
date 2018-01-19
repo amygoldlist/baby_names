@@ -11,6 +11,17 @@ library(shiny)
 
 
 shinyServer(function(input, output) {
+  ##Create wordcloud title
+  output$cloudTitle <- renderText({
+    if (input$yearInput[1]==input$yearInput[2]){
+      paste("Popular names from", input$yearInput[1])
+    }
+    else{
+      paste("Popular names from", input$yearInput[1], "to", input$yearInput[2])
+      
+    }
+  })
+  
   ##create word cloud based on years chosen
   output$cloud <- renderPlot({
     filtered <- names %>% 
@@ -20,7 +31,7 @@ shinyServer(function(input, output) {
       group_by(Name) %>% 
       summarize(freq = sum(n))
     
-  wordcloud(filtered$Name, filtered$freq, max.words = 15, scale=c(2,0.8),colors=brewer.pal(8, "Dark2"))
+  wordcloud(filtered$Name, filtered$freq, max.words = input$numberInput, scale=c(2,0.8),colors=brewer.pal(8, "Dark2"))
   })
   
   ##create timeseries for chosen names

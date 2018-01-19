@@ -16,34 +16,47 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Baby Name Explorer"),
   
-  # Sidebar  
-  sidebarLayout(
-    sidebarPanel(
+   
+  fluidRow(
+    
+    ##first panel
+    column(5,
+           wellPanel(
       ##subtitle
-      h4("Create a custom word cloud of popular names for a time frame"),
+      h2("Create a custom word cloud of popular names for a time frame"),
       
       ## filter for sex
       radioButtons("sexInput", "Select the type of names you'd like to see in your word cloud", 
-                   choices = c("either", "girl", "boy"),
-                   selected = "either"),
+                   choices = c("All names", "Girl's names", "Boy's names"),
+                   selected = "All names"),
       ##slider
-      sliderInput("yearInput", "Use the slider to select a time range for the cloud", 1915, 2015, c(25, 40),step = 1, sep=""),
+      sliderInput("yearInput", "Use the slider to select a time range for the cloud", 1915, 2014, c(25, 40),step = 1, sep=""),
+      
+      sliderInput("numberInput", "Select the number of names to display in your cloud", 5,25, value =10, step =1),
+      
+      textOutput("cloudTitle"),
       
       plotOutput("cloud")
-    ),
+    )),
     
     # Show stuff
-    mainPanel(
+    column(7,
        ##trying something new
       
-      h4("See trends of names over time"),
+      h2("See trends of names over time"),
       
+      h4("Start by selecting a name below to call up the menu, or start typing! Only names in the database are considered."),
       selectizeInput(
-        'nameInput', 'Type in some names. (Only names which have been given to at least five BC babies are allowed).', choices = names_all, selected = c("AMY", "CHARLES", "SAMUEL", "WARREN"), multiple = TRUE,
+        'nameInput', 'You may select up to eight names at a time', choices = names_all, selected = c("AMY", "CHARLES", "SAMUEL", "WARREN"), multiple = TRUE,
         options = list(maxItems = 8, placeholder = 'Please select a name')
       ),
       
-      plotOutput("time")
+      plotOutput("time"),
+      
+      h3("About the data"),
+      
+      h4("This dataset contains each name that was given to at least five babies in British Columbia from 1915 to 2014.")
+      
     )
   )
 ))
