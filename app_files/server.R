@@ -14,13 +14,32 @@ shinyServer(function(input, output) {
   ##create word cloud based on years chosen
   output$cloud <- renderPlot({
     filtered <- names %>% 
-      filter(#sex %in% c(0,1),
+      filter(Sex %in% gender_select(input$sexInput),
              year >= input$yearInput[1],
              year <= input$yearInput[2]) %>% 
       group_by(Name) %>% 
       summarize(freq = sum(n))
     
-  wordcloud(filtered$Name, filtered$freq, max.words = 15, scale=c(4,0.5),colors=brewer.pal(8, "Dark2"))
+  wordcloud(filtered$Name, filtered$freq, max.words = 15, scale=c(2,0.8),colors=brewer.pal(8, "Dark2"))
+  })
+  
+  ##create timeseries for chosen names
+  output$time <- renderPlot({
+    filter_2 <- names %>% 
+      filter(Name %in% input$nameInput) %>% 
+      group_by(Name, year) %>% 
+      summarize(freq = sum(n))
+    
+    ggplot(filter_2,aes(x = year, y = freq, group = Name, colour=Name))+
+      geom_line()+
+      theme_bw()+
+      ggtitle("Name Trends from 1915 to 2014")+
+      ylab("Name Frequency")+
+      xlab("Year")
+
+    
   })
   
 })
+
+

@@ -1,0 +1,12 @@
+name: Baby_Name_Visualizer
+title: Baby_Name_Visualizer
+username:
+account: goldlist
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 258506
+bundleId: 1183506
+url: https://goldlist.shinyapps.io/Baby_Name_Visualizer/
+when: 1516384047.47724
+asMultiple: FALSE
+asStatic: FALSE
