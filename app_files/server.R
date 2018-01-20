@@ -31,7 +31,7 @@ shinyServer(function(input, output) {
       group_by(Name) %>% 
       summarize(freq = sum(n))
     
-  wordcloud(filtered$Name, filtered$freq, max.words = input$numberInput, scale=c(2,0.8),colors=brewer.pal(8, "Dark2"))
+  wordcloud(filtered$Name, filtered$freq, max.words = input$numberInput, scale=c(4,0.8),colors=brewer.pal(8, "Dark2"))
   })
   
   ##create timeseries for chosen names

@@ -47,7 +47,7 @@ shinyUI(fluidPage(
       
       h4("Start by selecting a name below to call up the menu, or start typing! Only names in the database are considered."),
       selectizeInput(
-        'nameInput', 'You may select up to eight names at a time', choices = names_all, selected = c("AMY", "CHARLES", "SAMUEL", "WARREN"), multiple = TRUE,
+        'nameInput', 'You may select up to eight names at a time', choices = names_all, selected = c("CHARLES", "SAMUEL"), multiple = TRUE,
         options = list(maxItems = 8, placeholder = 'Please select a name')
       ),
       
