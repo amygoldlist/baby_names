@@ -30,7 +30,8 @@ shinyUI(fluidPage(
                    choices = c("All names", "Girl's names", "Boy's names"),
                    selected = "All names"),
       ##slider
-      sliderInput("yearInput", "Use the slider to select a time range for the cloud", 1915, 2014, c(25, 40),step = 1, sep=""),
+      sliderInput("yearInput", "Use the slider to select a time range for the cloud", 1915, 2014, c(25, 40),step = 1, 
+                  sep="", value = c(1915,2014)),
       
       sliderInput("numberInput", "Select the number of names to display in your cloud", 5,25, value =10, step =1),
       
@@ -45,11 +46,11 @@ shinyUI(fluidPage(
       
       h2("See trends of names over time"),
       
-      h4("Start by selecting a name below to call up the menu, or start typing! Only names in the database are considered."),
-      selectizeInput(
-        'nameInput', 'You may select up to eight names at a time', choices = names_all, selected = c("CHARLES", "SAMUEL"), multiple = TRUE,
-        options = list(maxItems = 8, placeholder = 'Please select a name')
-      ),
+      h4("Start by selecting a name below to call up the menu, or start typing!"),
+
+      uiOutput("nameList"),
+      
+      textOutput("timeTitle"),
       
       plotOutput("time"),
       
