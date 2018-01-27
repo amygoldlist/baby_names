@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
     
   wordcloud(filtered$Name, filtered$freq, 
             max.words = input$numberInput, 
-            scale=c(4,0.8),
+            scale=c(2.5,0.01),
             colors=brewer.pal(8, "Dark2"))
   })
   
