@@ -29,10 +29,11 @@ shinyUI(fluidPage(
       radioButtons("sexInput", "Select the type of names you'd like to see in your word cloud", 
                    choices = c("All names", "Girl's names", "Boy's names"),
                    selected = "All names"),
-      ##slider
+      ##slider for year
       sliderInput("yearInput", "Use the slider to select a time range for the cloud", 1915, 2014, c(25, 40),step = 1, 
                   sep="", value = c(1915,2014)),
       
+      ###number of names
       sliderInput("numberInput", "Select the number of names to display in your cloud", 5,25, value =10, step =1),
       
       textOutput("cloudTitle"),
@@ -48,6 +49,7 @@ shinyUI(fluidPage(
       
       h4("Start by selecting a name below to call up the menu, or start typing!"),
 
+      ##Selectize input is filtered by gender
       uiOutput("nameList"),
       
       textOutput("timeTitle"),

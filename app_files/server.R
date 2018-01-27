@@ -84,16 +84,19 @@ shinyServer(function(input, output) {
     ggplot(filter_2,aes(x = year, y = freq, group = Name, colour=Name))+
       geom_line()+
       theme_bw()+
-      #ggtitle("Popular names from ,input$yearInput[1] to input$yearInput[2]" )+  ####FIX!!!
       ylab("Name Frequency")+
-      xlab("Year")#change scale!!!
+      xlab("Year")+
+      scale_x_continuous()+
+      scale_color_brewer(palette="Dark2")
+      
     }
     
     else{ggplot(filter_2,aes(x = Name, y = freq, fill = Name))+
         geom_col()+
         theme_bw()+
         ylab("Name Frequency")+
-        xlab("Names")
+        xlab("Names")+
+        scale_fill_brewer(palette="Dark2")
       
     }
 
