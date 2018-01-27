@@ -5,8 +5,9 @@ account: goldlist
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 258506
-bundleId: 1183813
+bundleId: 1195737
 url: https://goldlist.shinyapps.io/Baby_Name_Visualizer/
-when: 1516400203.28216
+when: 1517074962.75653
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: app_data/name_spread_data.csv
