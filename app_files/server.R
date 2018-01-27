@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
       paste("Popular names from", input$yearInput[1])
     }
     else{
-      paste("Name trends from", input$yearInput[1], "to", input$yearInput[2])
+      paste("Popular names from", input$yearInput[1], "to", input$yearInput[2])
       
     }
   })
@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
       paste("Name comparison for", input$yearInput[1])
     }
     else{
-      paste("Popular names from", input$yearInput[1], "to", input$yearInput[2])
+      paste("Name trends from", input$yearInput[1], "to", input$yearInput[2])
       
     }
   })
@@ -84,7 +84,7 @@ shinyServer(function(input, output) {
     ggplot(filter_2,aes(x = year, y = freq, group = Name, colour=Name))+
       geom_line()+
       theme_bw()+
-      #ggtitle("Name Trends from ,input$yearInput[1] to input$yearInput[2]" )+  ####FIX!!!
+      #ggtitle("Popular names from ,input$yearInput[1] to input$yearInput[2]" )+  ####FIX!!!
       ylab("Name Frequency")+
       xlab("Year")#change scale!!!
     }
